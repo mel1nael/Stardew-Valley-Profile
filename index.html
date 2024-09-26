@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+      <title>Stardew Valley Profile</title>
+   </head>
+   <style>
+      @font-face {
+         font-family: stardewvalleyComum;
+         src: url(./assets/stardew-valley.ttf);
+      }
+      @font-face {
+         font-family: stardewvalleyBold;
+         src: url(./assets/svbold.ttf);
+      }
+      @font-face {
+         font-family: stardewvalleyLogoCaps;
+         src: url(./assets/Stardew\ Valley\ ALL\ CAPS.ttf);
+      }
+      @font-face {
+         font-family: stardewvalleyLogo;
+         src: url(./assets/Stardew\ Valley\ Regular.ttf);
+      }
+      * {
+         margin: 0;
+         padding: 0;
+      }
+
+      body {
+         display: flex;
+         justify-content: center;
+         background-image: url("backgroundStardew.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .todoConteudo {
+         position: relative;
+         background-image: url("backgroundStardew.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         padding: 90px 100px 90px 90px;
+         width: max-content;
+      }
+      .blocoPai {
+         display: flex;
+         flex-direction: row;
+         position: relative;
+         width: 750px;
+         height: 500px;
+         background-color: #ce8b64;
+         border: 8px solid #b9621e;
+         border-radius: 20px;
+         justify-content: center;
+         align-items: center;
+         box-shadow: -2px 2px #000000b8;
+      }
+      ::placeholder {
+         color: #a48357;
+      }
+      .stardewvalleyTopo {
+         position: absolute;
+         width: 550px;
+         z-index: 4;
+         top: -75px;
+         left: 0px;
+      }
+      .stardewLogoFoto {
+         width: 100%;
+      }
+
+      .content {
+         display: flex;
+         border-radius: 10px;
+         background-color: #ffc59d;
+         width: 743px;
+         height: 493px;
+      }
+      .coluna1 {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         width: 280px;
+         height: 100%;
+         border: #b9621e;
+      }
+      .fotoEnome {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: space-around;
+         list-style: none;
+         width: 280px;
+         height: 340px;
+         border: 2px solid #ce8b64;
+      }
+      .foto {
+         cursor: pointer;
+         display: flex;
+         position: relative;
+         width: 200px;
+         height: 220px;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .molduraFoto {
+         width: 100%;
+         height: 100%;
+         position: absolute;
+         top: 0;
+         left: 0;
+         z-index: 0;
+      }
+      .fotoEscolhida {
+         height: 202px;
+         width: 184px;
+         left: 8px;
+         bottom: 9px;
+         position: absolute;
+         z-index: 1;
+      }
+      .nome {
+         display: flex;
+         flex-direction: row;
+         justify-content: center;
+         align-items: center;
+         position: relative;
+         width: 200px;
+         height: 30px;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .molduraNome {
+         position: absolute;
+         width: 200px;
+         height: 35px;
+         z-index: 0;
+      }
+      .nomeEscolhido {
+         z-index: 1;
+      }
+      .nomeEscolhido input {
+         border: none;
+         background: none;
+         font-family: stardewvalleyBold;
+         font-size: 25px;
+         width: 100%;
+         text-align: center;
+         color: #4a1704;
+      }
+      .animais {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-around;
+         align-items: center;
+         width: 280px;
+         height: 111px;
+         border: 2px solid #ce8b64;
+      }
+      .animal1 {
+         width: 50px;
+         height: 50px;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+         position: relative;
+      }
+      .quadradinhoAnimal1 {
+         width: 100%;
+         height: 100%;
+         position: absolute;
+      }
+      .fotoAnimal img {
+         cursor: pointer;
+         position: absolute;
+         width: 35px;
+         height: 35px;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         object-fit: scale-down;
+      }
+
+      .nomeAnimal {
+         position: relative;
+      }
+      .nomeAnimal input {
+         position: absolute;
+         top: 3px;
+         left: -5px;
+         border: none;
+         background: none;
+         text-align: center;
+         width: 60px;
+         height: 15px;
+         font-family: stardewvalleyComum;
+         color: #4a1704;
+      }
+      .animal2 {
+         width: 50px;
+         height: 50px;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+         position: relative;
+      }
+      .quadradinhoAnimal2 {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+      }
+      .aniversario {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         width: 280px;
+         height: 103px;
+         border: 2px solid #ce8b64;
+         gap: 3px;
+      }
+      .textoAniversario {
+         font-family: stardewvalleyComum;
+         color: #4a1704;
+         font-size: 30px;
+      }
+      .dataAniversario {
+         display: flex;
+         width: 100%;
+         justify-content: space-evenly;
+      }
+      .estacaoAniversario {
+         display: flex;
+         position: relative;
+         width: 150px;
+         height: 50px;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .molduraEstacao {
+         position: absolute;
+         z-index: 0;
+         width: 100%;
+         height: 100%;
+      }
+      .estacaoEscolhida {
+         z-index: 1;
+      }
+      .estacaoEscolhida input {
+         font-size: 25px;
+         width: 100%;
+         height: 100%;
+         text-align: center;
+         border: none;
+         background: none;
+         font-family: stardewvalleyBold;
+         color: #4a1704;
+      }
+      .diaAniversario {
+         display: flex;
+         width: 50px;
+         height: 50px;
+         position: relative;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .molduraDia {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         z-index: 0;
+      }
+      .diaEscolhido {
+         width: 100%;
+         z-index: 1;
+      }
+      .diaEscolhido input {
+         text-align: center;
+         font-size: 24px;
+         width: 100%;
+         height: 100%;
+         border: none;
+         background: none;
+         font-family: stardewvalleyBold;
+         color: #4a1704;
+      }
+      .coluna2 {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         width: 100%;
+         height: 100%;
+         border: 1px solid #ce8b64;
+         box-sizing: border-box;
+      }
+      .biografia {
+         display: flex;
+         flex-direction: column;
+         border: 1px solid #ce8b64;
+         width: 100%;
+         height: 180px;
+      }
+      .letreiroBiografia {
+         position: relative;
+         width: max-content;
+         height: 35px;
+         margin: 15px 0px 0px 15px;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .molduraBiografia {
+         width: 200px;
+         height: 100%;
+         z-index: 1;
+      }
+      .palavraBiografia {
+         position: absolute;
+         text-align: center;
+         top: 4px;
+         font-size: 23px;
+         width: 100%;
+         height: 100%;
+         font-family: stardewvalleyBold;
+         color: #4a1704;
+      }
+      .estrelas {
+         display: flex;
+         width: 100%;
+         height: 100%;
+         flex-direction: column;
+         justify-content: space-evenly;
+         margin: 0 0 0 10px;
+      }
+      .estrela {
+         display: flex;
+         width: 100%;
+      }
+      .fotoEstrela {
+         width: 29px;
+         height: 19px;
+      }
+      .inputEstrela {
+         width: 100%;
+         font-size: 20px;
+         border: none;
+         background: none;
+         font-family: stardewvalleyComum;
+         color: #4a1704;
+
+         margin: 0 0 0 5px;
+      }
+      .inputEstrela:focus {
+         outline: none;
+      }
+      .lovesHates {
+         display: flex;
+         flex-direction: column;
+         width: 100%;
+         height: 216px;
+         border: 1px solid #ce8b64;
+      }
+      .letreiroLoves {
+         position: relative;
+         width: max-content;
+         height: 35px;
+         margin: 15px 0 0 15px;
+      }
+      .molduraLoves {
+         width: 260px;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+         height: 100%;
+      }
+      .palavraLoves {
+         position: absolute;
+         top: 6px;
+         width: 100%;
+         height: 100%;
+         text-align: center;
+         font-size: 23px;
+         font-family: stardewvalleyBold;
+         color: #4a1704;
+      }
+      .quadradosLovesHates {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-evenly;
+         width: 100%;
+         height: 100%;
+      }
+      .loves {
+         display: flex;
+         align-items: center;
+         justify-content: space-evenly;
+         margin: 10px 0 0 0;
+      }
+      .coracao {
+         width: 30px;
+         height: 30px;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .coracao img {
+         width: 100%;
+         height: 100%;
+      }
+      .itemLoves {
+         position: relative;
+         width: 50px;
+         height: 50px;
+      }
+      .loveQuadrado {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .loveEscolhido {
+         position: absolute;
+         top: 55%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+      .loveEscolhido img {
+         width: 33px;
+      }
+      .loveEstacao {
+         position: relative;
+         width: 65px;
+         height: 50px;
+      }
+      .quadradoEstacao {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .estacaoLove {
+         position: absolute;
+         top: 55%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+      .estacaoLove img {
+         width: 57px;
+      }
+      .hates {
+         display: flex;
+         align-items: center;
+         justify-content: space-evenly;
+         margin: 10px 0 0 0;
+      }
+      .hate {
+         width: 30px;
+         height: 30px;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .hate img {
+         width: 100%;
+         height: 100%;
+      }
+      .itemHates {
+         width: 50px;
+         height: 50px;
+         position: relative;
+      }
+      .hateQuadrado {
+         width: 100%;
+         position: absolute;
+         height: 100%;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .hateEscolhido {
+         position: absolute;
+         top: 55%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+      .hateEscolhido img {
+         width: 33px;
+         height: 33px;
+         object-fit: scale-down;
+      }
+      .hateEstacao {
+         width: 65px;
+         height: 50px;
+         position: relative;
+      }
+      .quadradoEstacao {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         box-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .estacaoHate {
+         position: absolute;
+         top: 55%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+      .estacaoHate img {
+         width: 57px;
+      }
+      .relacionamentos {
+         display: flex;
+         width: 100%;
+         height: 90px;
+         border: 2px solid #ce8b64;
+      }
+      .quadradosRelacionamentos {
+         margin-top: 3px;
+         display: flex;
+         justify-content: space-around;
+         width: 100%;
+         height: 100%;
+      }
+      .quadradoAmigo {
+         width: 75px;
+         height: 80px;
+         box-shadow: -2px 2px rgba(0, 0, 0, 0.193);
+         position: relative;
+      }
+      .quadradoAmigo img {
+         width: 100%;
+         height: 100%;
+      }
+      .amigoEscolhido {
+         cursor: pointer;
+         position: absolute;
+         bottom: 0;
+         left: 50%;
+         transform: translateX(-50%);
+      }
+      .amigoEscolhido img {
+         width: 63px;
+      }
+      #fade {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: #120a04c2;
+         z-index: 5;
+      }
+      #fade2 {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: #120a04c2;
+         z-index: 5;
+      }
+      #modal {
+         position: fixed;
+         left: 50%;
+         top: 50%;
+         transform: translate(-50%, -50%) scale(1, 1);
+         z-index: 10;
+         transition: transform 0.3s;
+         transition-timing-function: linear;
+      }
+      .modalFoto {
+         box-shadow: -6px 6px rgba(0, 0, 0, 0.193);
+         display: flex;
+         position: relative;
+         background: #b9621e;
+         width: 500px;
+         height: 150px;
+      }
+      .modalFoto img {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+      }
+      .perguntaModal {
+         position: absolute;
+         font-family: stardewvalleyBold;
+         font-size: 25px;
+         top: 20px;
+         left: 20px;
+         color: #4a1704;
+      }
+      .trocarFoto {
+         position: absolute;
+         font-family: stardewvalleyBold;
+         font-size: 20px;
+         color: #4a1704be;
+         top: 65px;
+         left: 20px;
+      }
+      .criarFoto {
+         position: absolute;
+         font-family: stardewvalleyBold;
+         font-size: 20px;
+         color: #4a1704be;
+         top: 100px;
+         left: 20px;
+      }
+      .modalFoto a {
+         text-decoration: none;
+         color: #4a1704be;
+      }
+      .botaoFechar {
+         position: absolute;
+         z-index: 99;
+         left: 580px;
+         top: -50px;
+         width: 20px;
+         height: 20px;
+      }
+      .botaoFechar p {
+         font-family: stardewvalleyBold;
+         cursor: pointer;
+         color: brown;
+         font-size: 40px;
+         text-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      .botaoFechar2 {
+         position: absolute;
+         z-index: 99;
+         left: 580px;
+         top: -50px;
+         width: 20px;
+         height: 20px;
+      }
+      .botaoFechar2 p {
+         font-family: stardewvalleyBold;
+         cursor: pointer;
+         color: brown;
+         font-size: 40px;
+         text-shadow: -3px 2px rgba(0, 0, 0, 0.193);
+      }
+      #modal2 {
+         display: flex;
+         position: fixed;
+         left: 50%;
+         top: 50%;
+         width: 418px;
+         height: 212px;
+         transform: translate(-50%, -50%) scale(1, 1);
+         z-index: 10;
+         transition: transform 0.3s;
+         transition-timing-function: linear;
+      }
+      .molduraModal {
+         position: absolute;
+      }
+      .imagens {
+         display: flex;
+         margin: 20px;
+         box-sizing: border-box;
+         overflow: auto;
+         height: 172px;
+         justify-content: center;
+         position: absolute;
+         z-index: 11;
+         gap: 5px;
+         flex-wrap: wrap;
+         margin-right: 27px;
+      }
+      .imagens .imagem {
+         background-color: #f2d7a5;
+         width: 50px;
+         border: solid 3px #4a1704d5;
+         border-radius: 4px;
+         padding: 5px;
+         height: 50px;
+      }
+
+      .imagens .imagem img {
+         width: 100%;
+         height: 100%;
+         object-fit: scale-down;
+         cursor: pointer;
+      }
+      ::-webkit-scrollbar {
+         width: 8px;
+         border-radius: 5px;
+      }
+      ::-webkit-scrollbar-track {
+         background: #fed38dae;
+         border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb {
+         background: #a3611fa7;
+         border-radius: 5px;
+      }
+      #modal.hide,
+      #fade.hide,
+      #fade2.hide,
+      #modal2.hide {
+         pointer-events: none;
+         opacity: 0;
+      }
+
+      #modal.hide,
+      #modal2.hide {
+         transform: translate(-50%, -50%) scale(0.1, 0.1);
+         transition: 0.3s;
+      }
+      #fade,
+      #fade2 #modal,
+      #modal2 {
+         opacity: 1;
+         pointer-events: all;
+      }
+      .bloco {
+         cursor: pointer;
+      }
+
+      .pointerNone {
+         pointer-events: none;
+      }
+
+      .downloadImage {
+         position: absolute;
+         bottom: 55px;
+         right: 135px;
+         padding: 7px;
+         border: 4px solid #b9621e;
+         background: #ffcdb0;
+         border-radius: 0 0 10px 10px;
+         font-family: stardewvalleyBold;
+         cursor: pointer;
+         box-shadow: -2px 2px rgba(0, 0, 0, 0.453);
+      }
+      .downloadImage:hover {
+         background: #e6af90;
+         transition: all 0.5s;
+      }
+      .downloadImage:active {
+         background: #c49174;
+      }
+   </style>
+   <body>
+      <div class="todoConteudo">
+         <div class="blocoPai">
+            <div class="stardewvalleyTopo">
+               <img
+                  src="./assets/stardewLogo.png"
+                  alt=""
+                  class="stardewLogoFoto"
+               />
+            </div>
+            <div class="content">
+               <div class="coluna1">
+                  <div class="fotoEnome">
+                     <div class="foto">
+                        <img src="./assets/molduraFoto.png" alt="" class="molduraFoto" />
+                        <img
+                           src="./assets/uploadImg.png"
+                           alt=""
+                           class="fotoEscolhida"
+                        />
+                     </div>
+                     <div class="nome">
+                        <img src="./assets/nome.png" alt="" class="molduraNome" />
+                        <div class="nomeEscolhido">
+                           <input type="text" placeholder="your name" />
+                        </div>
+                     </div>
+                  </div>
+                  <div class="animais">
+                     <div class="animal-container">
+                        <div class="bloco animal1" pasta="Animais">
+                           <img
+                              src="./assets/quadradinho.png"
+                              alt=""
+                              class="quadradinhoAnimal1 pointerNone"
+                           />
+                           <div class="fotoAnimal pointerNone">
+                              <img
+                                 class="imagemEscolhida"
+                                 src="./assets/uploadImg.png"
+                                 alt="animal1"
+                              />
+                           </div>
+                        </div>
+                        <div class="nomeAnimal">
+                           <input type="text" placeholder="Name" />
+                        </div>
+                     </div>
+                     <div class="animal-container">
+                        <div class="bloco animal2" pasta="Animais">
+                           <img
+                              src="./assets/quadradinho.png"
+                              alt=""
+                              class="quadradinhoAnimal2 pointerNone"
+                           />
+                           <div class="fotoAnimal pointerNone">
+                              <img
+                                 class="imagemEscolhida"
+                                 src="./assets/uploadImg.png"
+                                 alt="animal2"
+                              />
+                           </div>
+                        </div>
+                        <div class="nomeAnimal">
+                           <input type="text" placeholder="Name" />
+                        </div>
+                     </div>
+                  </div>
+                  <div class="aniversario">
+                     <div class="textoAniversario">Birthday</div>
+                     <div class="dataAniversario">
+                        <div class="estacaoAniversario">
+                           <img
+                              src="./assets/inputEstação.png"
+                              alt=""
+                              class="molduraEstacao"
+                           />
+                           <div class="estacaoEscolhida">
+                              <input type="text" placeholder="season" />
+                           </div>
+                        </div>
+                        <div class="diaAniversario">
+                           <img
+                              src="./assets/inputDia.png"
+                              alt=""
+                              class="molduraDia"
+                           />
+                           <div class="diaEscolhido"><input type="text" /></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="coluna2">
+                  <div class="biografia">
+                     <div class="letreiroBiografia">
+                        <img src="./assets/nome.png" alt="" class="molduraBiografia" />
+                        <div class="palavraBiografia">Biography</div>
+                     </div>
+                     <div class="estrelas">
+                        <div class="estrela">
+                           <img
+                              src="./assets/estrelaBio.png"
+                              alt=""
+                              class="fotoEstrela"
+                           /><input
+                              type="text"
+                              class="inputEstrela"
+                              placeholder="info 1"
+                           />
+                        </div>
+                        <div class="estrela">
+                           <img
+                              src="./assets/estrelaBio.png"
+                              alt=""
+                              class="fotoEstrela"
+                           /><input
+                              type="text"
+                              class="inputEstrela"
+                              placeholder="info 2"
+                           />
+                        </div>
+                        <div class="estrela">
+                           <img
+                              src="./assets/estrelaBio.png"
+                              alt=""
+                              class="fotoEstrela"
+                           /><input
+                              type="text"
+                              class="inputEstrela"
+                              placeholder="info 3"
+                           />
+                        </div>
+                        <div class="estrela">
+                           <img
+                              src="./assets/estrelaBio.png"
+                              alt=""
+                              class="fotoEstrela"
+                           /><input
+                              type="text"
+                              class="inputEstrela"
+                              placeholder="info 4"
+                           />
+                        </div>
+                        <div class="estrela">
+                           <img
+                              src="./assets/estrelaBio.png"
+                              alt=""
+                              class="fotoEstrela"
+                           /><input
+                              type="text"
+                              class="inputEstrela"
+                              placeholder="info 5"
+                           />
+                        </div>
+                     </div>
+                  </div>
+                  <div class="lovesHates">
+                     <div class="letreiroLoves">
+                        <img
+                           src="./assets/nome.png"
+                           alt=""
+                           class="molduraLoves"
+                        />
+                        <div class="palavraLoves">Loves and Hates</div>
+                     </div>
+                     <div class="quadradosLovesHates">
+                        <div class="loves">
+                           <div class="coracao">
+                              <img src="./assets/coracao.png" alt="" />
+                           </div>
+                           <div class="bloco itemLoves" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="loveQuadrado pointerNone"
+                              />
+                              <div class="loveEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco itemLoves" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="loveQuadrado pointerNone"
+                              />
+                              <div class="loveEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco itemLoves" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="loveQuadrado pointerNone"
+                              />
+                              <div class="loveEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco itemLoves" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="loveQuadrado pointerNone"
+                              />
+                              <div class="loveEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco itemLoves" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="loveQuadrado pointerNone"
+                              />
+                              <div class="loveEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco loveEstacao" pasta="Estacoes">
+                              <img
+                                 src="./assets/quadradoMaior.png"
+                                 alt=""
+                                 class="quadradoEstacao pointerNone"
+                              />
+                              <div class="estacaoLove pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                        </div>
+                        <div class="hates">
+                           <div class="hate">
+                              <img src="./assets/hate.png" alt="" />
+                           </div>
+                           <div class="bloco itemHates" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="hateQuadrado pointerNone"
+                              />
+                              <div class="hateEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco itemHates" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="hateQuadrado pointerNone"
+                              />
+                              <div class="hateEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco itemHates" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="hateQuadrado pointerNone"
+                              />
+                              <div class="hateEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco itemHates" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="hateQuadrado pointerNone"
+                              />
+                              <div class="hateEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco itemHates" pasta="Itens">
+                              <img
+                                 src="./assets/quadradinho.png"
+                                 alt=""
+                                 class="hateQuadrado pointerNone"
+                              />
+                              <div class="hateEscolhido pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                           <div class="bloco hateEstacao" pasta="Estacoes">
+                              <img
+                                 src="./assets/quadradoMaior.png"
+                                 alt=""
+                                 class="quadradoEstacao pointerNone"
+                              />
+                              <div class="estacaoHate pointerNone">
+                                 <img
+                                    class="imagemEscolhida"
+                                    src="./assets/uploadImg.png"
+                                    alt=""
+                                 />
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="relacionamentos">
+                     <div class="quadradosRelacionamentos">
+                        <div
+                           class="bloco quadradoAmigo"
+                           pasta="Relacionamentos"
+                        >
+                           <img
+                              src="./assets/quadradoNamorado.png"
+                              alt=""
+                              class="pointerNone"
+                           />
+                           <div class="amigoEscolhido pointerNone">
+                              <img
+                                 class="imagemEscolhida"
+                                 src="./assets/uploadImg.png"
+                                 alt=""
+                              />
+                           </div>
+                        </div>
+                        <div
+                           class="bloco quadradoAmigo"
+                           pasta="Relacionamentos"
+                        >
+                           <img
+                              src="./assets/quadradoAmigo.png"
+                              alt=""
+                              class="pointerNone"
+                           />
+                           <div class="amigoEscolhido pointerNone">
+                              <img
+                                 class="imagemEscolhida"
+                                 src="./assets/uploadImg.png"
+                                 alt=""
+                              />
+                           </div>
+                        </div>
+                        <div
+                           class="bloco quadradoAmigo"
+                           pasta="Relacionamentos"
+                        >
+                           <img
+                              src="./assets/quadradoAmigo.png"
+                              alt=""
+                              class="pointerNone"
+                           />
+                           <div class="amigoEscolhido pointerNone">
+                              <img
+                                 class="imagemEscolhida"
+                                 src="./assets/uploadImg.png"
+                                 alt=""
+                              />
+                           </div>
+                        </div>
+                        <div
+                           class="bloco quadradoAmigo"
+                           pasta="Relacionamentos"
+                        >
+                           <img
+                              src="./assets/quadradoAmigo.png"
+                              alt=""
+                              class="pointerNone"
+                           />
+                           <div class="amigoEscolhido pointerNone">
+                              <img
+                                 class="imagemEscolhida"
+                                 src="./assets/uploadImg.png"
+                                 alt=""
+                              />
+                           </div>
+                        </div>
+                        <div
+                           class="bloco quadradoAmigo"
+                           pasta="Relacionamentos"
+                        >
+                           <img
+                              src="./assets/quadradoAmigo.png"
+                              alt=""
+                              class="pointerNone"
+                           />
+                           <div class="amigoEscolhido pointerNone">
+                              <img
+                                 class="imagemEscolhida"
+                                 src="./assets/uploadImg.png"
+                                 alt=""
+                              />
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="fade" class="hide"></div>
+         <div id="modal" class="hide">
+            <div class="modalFoto">
+               <div class="botaoFechar"><p>x</p></div>
+               <img src="./assets/modal.png" alt="" class="molduraModal" />
+               <div class="perguntaModal">What do you want to do?</div>
+               <div class="trocarFoto"><a href="">Change my photo.</a></div>
+               <input type="file" id="inputFoto" hidden />
+               <div class="criarFoto">
+                  <a
+                     href="https://jazzybee.itch.io/sdvcharactercreator"
+                     target="_blank"
+                     >Make a Stardew Valley character portrait.</a
+                  >
+               </div>
+            </div>
+         </div>
+         <div id="fade2" class="hide"></div>
+         <div id="modal2" class="hide">
+            <div class="molduraModal">
+               <img src="./assets/modal.png" alt="" />
+            </div>
+            <div class="botaoFechar2"><p>x</p></div>
+            <div class="imagens"></div>
+         </div>
+         <button class="downloadImage">DOWNLOAD</button>
+      </div>
+   </body>
+   <script>
+      let modal = document.querySelector("#modal");
+      let fade = document.querySelector("#fade");
+      let fade2 = document.querySelector("#fade2");
+      let botaoFechar = document.querySelector(".botaoFechar");
+      let botaoFechar2 = document.querySelector(".botaoFechar2");
+      let fotoContainer = document.querySelector(".foto");
+      let trocarFoto = document.querySelector(".trocarFoto");
+      let fotoEscolhida = document.querySelector(".fotoEscolhida");
+      let inputFoto = document.querySelector("#inputFoto");
+      let modal2 = document.querySelector("#modal2");
+      let blocos = document.querySelectorAll(".bloco");
+      let blocoIndex;
+
+      trocarFoto.addEventListener("click", (e) => {
+         e.preventDefault();
+         inputFoto.click();
+      });
+
+      inputFoto.addEventListener("change", (e) => {
+         const arquivo = e.target.files[0];
+         console.log(arquivo);
+         if (arquivo) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+               console.log(fotoEscolhida);
+               fotoEscolhida.src = event.target.result;
+               toggleModal();
+            };
+
+            reader.readAsDataURL(arquivo);
+         }
+      });
+
+      const toggleModal = () => {
+         if (modal2.classList.contains("hide")) {
+            modal.classList.toggle("hide");
+            fade.classList.toggle("hide");
+         }
+      };
+
+      [fade, botaoFechar, fotoContainer].forEach((el) => {
+         el.addEventListener("click", () => toggleModal());
+      });
+
+      const toggleModal2 = () => {
+         if (modal.classList.contains("hide")) {
+            modal2.classList.toggle("hide");
+            fade2.classList.toggle("hide");
+         }
+      };
+      [fade2, botaoFechar2].forEach((el) => {
+         el.addEventListener("click", () => toggleModal2());
+      });
+
+      blocos.forEach((bloco, index) => {
+         bloco.addEventListener("click", (e) => {
+            blocoIndex = index;
+            let elemento = e.target;
+            let pasta = elemento.getAttribute("pasta");
+            let quantidadeImagem;
+            let nomeArquivo;
+            let modalImagens = document.querySelector(".imagens");
+            modalImagens.innerHTML = "";
+
+            if (pasta === "Animais") {
+               quantidadeImagem = 19;
+               nomeArquivo = "animal";
+            } else if (pasta === "Itens") {
+               quantidadeImagem = 45;
+               nomeArquivo = "item";
+            } else if (pasta === "Relacionamentos") {
+               quantidadeImagem = 34;
+               nomeArquivo = "personagem";
+            } else {
+               quantidadeImagem = 4;
+               nomeArquivo = "estacao";
+            }
+
+            for (i = 1; i <= quantidadeImagem; i++) {
+               let url = `./assets/${pasta}/${nomeArquivo}${i}.png`;
+               let html = `<div class="imagem" onclick="changeImage('${url}')"><img src="${url}"></div>`;
+
+               modalImagens.innerHTML += html;
+            }
+
+            toggleModal2();
+         });
+      });
+
+      const changeImage = (url) => {
+         let bloco = blocos[blocoIndex];
+         let image = bloco.querySelector(".imagemEscolhida");
+         image.src = url;
+         toggleModal2();
+      };
+
+      document
+         .querySelector(".downloadImage")
+         .addEventListener("click", function () {
+            document.querySelector(".downloadImage").style.display = "none";
+            html2canvas(document.querySelector(".todoConteudo")).then(function (
+               canvas
+            ) {
+               let link = document.createElement("a");
+               link.download = "captured_image.png"; // Nome do arquivo
+               link.href = canvas.toDataURL(); // Gera a URL da imagem a partir do canvas
+               link.click(); // Simula o clique para iniciar o download
+               document.querySelector(".downloadImage").style.display = "block";
+            });
+         });
+   </script>
+</html>
