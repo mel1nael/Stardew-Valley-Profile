@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/src/dom-to-image.min.js"></script>
       <title>Stardew Valley Profile</title>
    </head>
    <style>
@@ -34,9 +34,13 @@
          background-image: url("./assets/backgroundStardew.jpg");
          background-repeat: no-repeat;
          background-size: cover;
+         height: 100vh;
+         align-items: center;
+
       }
 
       .todoConteudo {
+         height: max-content;
          position: relative;
          background-image: url("./assets/backgroundStardew.jpg");
          background-repeat: no-repeat;
@@ -1288,19 +1292,20 @@
          toggleModal2();
       };
 
-      document
-         .querySelector(".downloadImage")
-         .addEventListener("click", function () {
-            document.querySelector(".downloadImage").style.display = "none";
-            html2canvas(document.querySelector(".todoConteudo")).then(function (
-               canvas
-            ) {
-               let link = document.createElement("a");
-               link.download = "captured_image.png"; // Nome do arquivo
-               link.href = canvas.toDataURL(); // Gera a URL da imagem a partir do canvas
-               link.click(); // Simula o clique para iniciar o download
-               document.querySelector(".downloadImage").style.display = "block";
-            });
-         });
+      document.querySelector(".downloadImage").addEventListener("click", function () {
+         var node = document.querySelector('.todoConteudo');
+         document.querySelector(".downloadImage").style.display = "none"
+         domtoimage.toPng(node)
+            .then(function (dataUrl) {
+               var link = document.createElement('a');
+               link.download = 'stardew-valley.png';
+               link.href = dataUrl;
+               link.click();
+               document.querySelector(".downloadImage").style.display = "block"
+            })
+            .catch(function (error) {
+               console.error('Error:', error);
+            });
+      });
    </script>
 </html>
