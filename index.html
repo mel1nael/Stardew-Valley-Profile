@@ -576,7 +576,7 @@
          display: flex;
          position: relative;
          background: #b9621e;
-         width: 500px;
+         width: 450px;
          height: 150px;
       }
       .modalFoto img {
@@ -1191,11 +1191,7 @@
                <div class="trocarFoto"><a href="">Change my photo.</a></div>
                <input type="file" id="inputFoto" hidden />
                <div class="criarFoto">
-                  <a
-                     href="https://jazzybee.itch.io/sdvcharactercreator"
-                     target="_blank"
-                     >Make a Stardew Valley character portrait.</a
-                  >
+                  <a href="https://jazzybee.itch.io/sdvcharactercreator" target="_blank">Make a Stardew Valley character portrait.</a>
                </div>
             </div>
          </div>
@@ -1223,6 +1219,7 @@
       let modal2 = document.querySelector("#modal2");
       let blocos = document.querySelectorAll(".bloco");
       let blocoIndex;
+      let alertCharacter = document.querySelector('.criarFoto');
 
       trocarFoto.addEventListener("click", (e) => {
          e.preventDefault();
@@ -1243,6 +1240,12 @@
 
             reader.readAsDataURL(arquivo);
          }
+      });
+
+      alertCharacter.addEventListener('click', () => {
+         alert("This app was developed by , he owns all the rights. \n" +
+         "Note that it works better on web ;)\n" +
+          "Also, if you press the toggle button (the first one), the background will be removed and the picture will be better placed on the frame.");
       });
 
       const toggleModal = () => {
